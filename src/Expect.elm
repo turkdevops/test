@@ -1,27 +1,11 @@
-module Expect
-    exposing
-        ( Expectation
-        , FloatingPointTolerance(..)
-        , all
-        , atLeast
-        , atMost
-        , equal
-        , equalDicts
-        , equalLists
-        , equalSets
-        , err
-        , fail
-        , false
-        , greaterThan
-        , lessThan
-        , notEqual
-        , notWithin
-        , ok
-        , onFail
-        , pass
-        , true
-        , within
-        )
+module Expect exposing
+    ( Expectation, equal, notEqual, all
+    , lessThan, atMost, greaterThan, atLeast
+    , FloatingPointTolerance(..), within, notWithin
+    , true, false
+    , ok, err, equalLists, equalDicts, equalSets
+    , pass, fail, onFail
+    )
 
 {-| A library to create `Expectation`s, which describe a claim to be tested.
 
@@ -87,8 +71,9 @@ Let's say we want to figure out if our estimation of pi is precise enough.
 
 Is `3.14` within `0.01` of `pi`? Yes, because `3.13 < pi < 3.15`.
 
-    test "3.14 approximates pi with absolute precision" <| \_ ->
-        3.14 |> Expect.within (Absolute 0.01) pi
+    test "3.14 approximates pi with absolute precision" <|
+        \_ ->
+            3.14 |> Expect.within (Absolute 0.01) pi
 
 
 ### Relative Tolerance
