@@ -128,3 +128,25 @@ Make sure you grab the latest versions of the test runner that you are using:
 Instead of using `Test.filter` to avoid running tests, use `skip` and `only` (see above for documentation).
 
 We now forbid tests and suites to have descriptions that are blank, or that are identical across siblings or parents and children. If you get failures from this, rename your tests to be clearer about what they're testing.
+
+### From 0.17
+You will need to delete `elm-stuff` and `tests/elm-stuff`.
+
+If you are using the Node runner, you will need to install the latest version (`npm update -g elm-test`) and pull down the new `Main.elm`: `curl -o tests/Main.elm https://raw.githubusercontent.com/rtfeldman/node-test-runner/3.0.1/templates/Main.elm`
+
+### From 1.x and elm-check
+[`legacy-elm-test`](http://package.elm-lang.org/packages/rtfeldman/legacy-elm-test/latest) provides a
+drop-in replacement for the `ElmTest 1.0` API, except implemented in terms of
+the current `elm-test`. It also includes support for `elm-check` tests.
+
+This lets you use the latest test runners right now, and upgrade incrementally.
+
+## Releases
+| Version | Notes |
+| ------- | ----- |
+| [**4.0.0**](https://github.com/elm-community/elm-test/tree/4.0.0) | Add `only`, `skip`, `todo`; change `Fuzz.frequency` to fail rather than crash on bad input, disallow tests with blank or duplicate descriptions.
+| [**3.1.0**](https://github.com/elm-community/elm-test/tree/3.1.0) | Add `Expect.all`
+| [**3.0.0**](https://github.com/elm-community/elm-test/tree/3.0.0) | Update for Elm 0.18; switch the argument order of `Fuzz.andMap`.
+| [**2.1.0**](https://github.com/elm-community/elm-test/tree/2.1.0) | Switch to rose trees for `Fuzz.andThen`, other API additions.
+| [**2.0.0**](https://github.com/elm-community/elm-test/tree/2.0.0) | Scratch-rewrite to project-fuzzball
+| [**1.0.0**](https://github.com/elm-community/elm-test/tree/1.0.0) | ElmTest initial release
