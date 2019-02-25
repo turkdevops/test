@@ -164,6 +164,7 @@ testers =
     , testIndex
     , testChildren
     , testContaining
+    , testHasNot
     ]
 
 
@@ -479,6 +480,17 @@ testContaining output =
                         , containing [ text "?" ]
                         ]
                     |> Query.count (Expect.equal 2)
+        ]
+
+
+testHasNot : Single msg -> Test
+testHasNot output =
+    describe "Query.hasNot"
+        [ test "does not query children (regression for #74)" <|
+            \() ->
+                output
+                    |> Query.find [ id "section" ]
+                    |> Query.hasNot [ class "list-item" ]
         ]
 
 
