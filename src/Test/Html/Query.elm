@@ -1,8 +1,20 @@
-module Test.Html.Query exposing
-    ( Single, Multiple, fromHtml
-    , find, findAll, children, first, index, keep
-    , count, contains, has, hasNot, each
-    )
+module Test.Html.Query
+    exposing
+        ( Single
+        , Multiple
+        , fromHtml
+        , find
+        , findAll
+        , children
+        , first
+        , index
+        , keep
+        , count
+        , contains
+        , has
+        , hasNot
+        , each
+        )
 
 {-| Querying HTML structure.
 
@@ -26,7 +38,6 @@ import Test.Html.Internal.ElmHtml.InternalTypes exposing (ElmHtml)
 import Test.Html.Internal.Inert as Inert
 import Test.Html.Query.Internal as Internal exposing (QueryError(..), failWithQuery)
 import Test.Html.Selector.Internal as Selector exposing (Selector, selectorToString)
-
 
 
 {- DESIGN NOTES:
@@ -404,7 +415,7 @@ collectResults listOfResults =
                 ( Ok values, (Ok a) :: rest ) ->
                     step (Ok (a :: values)) rest
     in
-    step (Ok []) listOfResults
+        step (Ok []) listOfResults
 
 
 {-| Expect the element to match all of the given selectors.
@@ -459,8 +470,8 @@ hasNot selectors (Internal.Single showTrace query) =
         queryName =
             "Query.hasNot " ++ Internal.joinAsList selectorToString selectors
     in
-    Internal.hasNot selectors query
-        |> failWithQuery showTrace queryName query
+        Internal.hasNot selectors query
+            |> failWithQuery showTrace queryName query
 
 
 {-| Expect that a [`Single`](#Single) expectation will hold true for each of the
